@@ -34,6 +34,7 @@ dependencies:
   flutter_bloc: ^8.1.6
   flutter_screenutil: ^5.9.3
   fpdart: ^1.1.0
+  get_it: ^7.7.0
   internet_connection_checker_plus: ^2.4.2
   supabase_flutter: ^2.5.6
 

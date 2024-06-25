@@ -1,5 +1,5 @@
 import 'package:fpdart/fpdart.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:tuncblog/core/common/entities/user.dart';
 import 'package:tuncblog/core/error/failure.dart';
 import 'package:tuncblog/core/usecases/usecase.dart';
 import 'package:tuncblog/feature/auth/domain/repositories/auth_repository.dart';
@@ -10,6 +10,6 @@ class CurrentUser implements UseCase<User, NoParams> {
 
   @override
   Future<Either<Failure, User>> call(NoParams params) async {
-    throw await authRepository.currentUser();
+    return await authRepository.currentUser();
   }
 }
