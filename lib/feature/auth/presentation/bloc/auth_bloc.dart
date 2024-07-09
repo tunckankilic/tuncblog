@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tuncblog/core/common/cubits/app_user/app_user_cubit.dart';
@@ -29,6 +31,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthSignUp>(_onAuthSignUp);
     on<AuthLogin>(_onAuthLogin);
     on<AuthIsUserLoggedIn>(_isUserLoggedIn);
+    on<AuthSignOut>(_onAuthSignOut);
   }
 
   void _isUserLoggedIn(
@@ -84,5 +87,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   ) {
     _appUserCubit.updateUser(user);
     emit(AuthSuccess(user));
+  }
+
+  void _onAuthSignOut(AuthSignOut event, Emitter<AuthState> emit) {
+    _appUserCubit.signOut();
+    emit(AuthInitial());
   }
 }

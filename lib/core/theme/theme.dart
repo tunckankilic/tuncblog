@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tuncblog/core/theme/color_palette.dart';
-import 'package:tuncblog/core/theme/text_theme.dart';
 
 class AppTheme {
   static _border([Color color = ColorPalette.borderColor]) =>

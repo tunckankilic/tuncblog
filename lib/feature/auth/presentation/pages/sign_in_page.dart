@@ -50,7 +50,7 @@ class _SignInPageState extends State<SignInPage> {
             },
             builder: (context, state) {
               if (state is AuthLoading) {
-                return Center(
+                return const Center(
                   child: CircularProgressIndicator(),
                 );
               } else {
@@ -103,7 +103,7 @@ class _SignInPageState extends State<SignInPage> {
                         onTap: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
-                              builder: (context) => SignUpPage(),
+                              builder: (context) => const SignUpPage(),
                             ),
                           );
                         },

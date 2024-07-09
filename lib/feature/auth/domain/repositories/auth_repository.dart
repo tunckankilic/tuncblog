@@ -1,3 +1,5 @@
+// ignore_for_file: implementation_imports
+
 import 'package:fpdart/src/either.dart';
 import 'package:tuncblog/core/common/entities/user.dart';
 import 'package:tuncblog/core/error/failure.dart';

@@ -1,46 +1,24 @@
 import 'package:get_it/get_it.dart';
+import 'package:hive/hive.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:tuncblog/core/network/connection_checker.dart';
 import 'package:tuncblog/core/secret/secret.dart';
 import 'package:tuncblog/feature/auth/data/datasources/auth_remote_data_source.dart';
 import 'package:tuncblog/feature/auth/data/repositories/auth_repository.dart';
+import 'package:tuncblog/feature/auth/domain/repositories/auth_repository.dart';
+import 'package:tuncblog/feature/auth/domain/usecases/current_user.dart';
+import 'package:tuncblog/feature/auth/domain/usecases/user_login.dart';
 import 'package:tuncblog/feature/auth/domain/usecases/user_sign_up.dart';
-import 'package:tuncblog/feature/auth/presentation/bloc/auth_bloc.dart';
+import 'package:tuncblog/feature/blog/data/datasources/blog_local_data_source.dart';
+import 'package:tuncblog/feature/blog/data/repositories/blog_repository_impl.dart';
+import 'package:tuncblog/feature/blog/domain/repositories/blog_repository.dart';
+import 'package:tuncblog/feature/blog/domain/usecases/get_all_blogs.dart';
+import 'package:tuncblog/feature/blog/domain/usecases/upload_blog.dart';
+import 'package:tuncblog/feature/blog/presentation/bloc/blog_bloc.dart';
 
-final s1 = GetIt.instance;
-Future<void> initDependencies() async {
-  _initAuth();
-  final supabase = await Supabase.initialize(
-    url: Secret.url,
-    anonKey: Secret.key,
-  );
-  s1.registerSingleton(() => supabase.client);
-}
-
-void _initAuth() {
-  s1.registerFactory<AuthRemoteDataSourceImpl>(
-    () => AuthRemoteDataSourceImpl(
-      s1(),
-    ),
-  );
-
-  s1.registerFactory<AuthRepositoryImpl>(
-    () => AuthRepositoryImpl(
-      s1(),
-    ),
-  );
-
-  s1.registerFactory<UserSignUp>(
-    () => UserSignUp(
-      s1(),
-    ),
-  );
-
-  s1.registerLazySingleton<AuthBloc>(
-    () => AuthBloc(
-      userSignUp: s1(),
-      userLogin: s1(),
-      currentUser: s1(),
-      appUserCubit: s1(),
-    ),
-  );
-}
+import 'core/common/cubits/app_user/app_user_cubit.dart';
+import 'feature/auth/presentation/bloc/auth_bloc.dart';
+import 'feature/blog/data/datasources/blog_remote_data_source.dart';
+part 'init_dependencies_main.dart';
