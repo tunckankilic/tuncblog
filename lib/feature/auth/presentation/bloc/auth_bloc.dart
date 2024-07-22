@@ -93,4 +93,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     _appUserCubit.signOut();
     emit(AuthInitial());
   }
+
+  void _onAuthDeleted(AuthDeleted event, Emitter<AuthState> emit) {
+    _appUserCubit.deleteAccount();
+    emit(AuthInitial());
+  }
 }

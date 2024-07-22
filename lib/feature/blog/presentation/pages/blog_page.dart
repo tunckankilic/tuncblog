@@ -39,13 +39,31 @@ class _BlogPageState extends State<BlogPage> {
               CupertinoIcons.add_circled,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
           IconButton(
+            tooltip: "Sign Out",
             onPressed: () async {
-              await context.read<AuthBloc>()
-                ..add(AuthSignOut());
+              context.read<AuthBloc>().add(AuthSignOut());
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const SignInPage(),
+                ),
+              );
+            },
+            icon: const Icon(
+              Icons.logout,
+            ),
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          IconButton(
+            tooltip: "Delete",
+            onPressed: () async {
+              context.read<AuthBloc>().add(AuthDeleted());
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
