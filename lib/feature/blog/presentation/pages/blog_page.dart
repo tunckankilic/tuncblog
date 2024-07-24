@@ -45,7 +45,8 @@ class _BlogPageState extends State<BlogPage> {
           IconButton(
             tooltip: "Sign Out",
             onPressed: () async {
-              context.read<AuthBloc>().add(AuthSignOut());
+              await context.read<AuthBloc>()
+                ..add(AuthSignOut());
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
@@ -63,7 +64,8 @@ class _BlogPageState extends State<BlogPage> {
           IconButton(
             tooltip: "Delete",
             onPressed: () async {
-              context.read<AuthBloc>().add(AuthDeleted());
+              await context.read<AuthBloc>()
+                ..add(AuthDeleted());
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
@@ -72,7 +74,7 @@ class _BlogPageState extends State<BlogPage> {
               );
             },
             icon: const Icon(
-              Icons.logout,
+              Icons.delete,
             ),
           ),
         ],

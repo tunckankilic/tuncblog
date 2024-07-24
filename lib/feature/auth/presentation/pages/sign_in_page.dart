@@ -7,6 +7,8 @@ import 'package:tuncblog/feature/auth/presentation/bloc/auth_bloc.dart';
 import 'package:tuncblog/feature/auth/presentation/pages/sign_up_page.dart';
 import 'package:tuncblog/feature/auth/presentation/widgets/auth_button.dart';
 import 'package:tuncblog/feature/auth/presentation/widgets/auth_field.dart';
+import 'package:tuncblog/feature/blog/presentation/pages/blog_page.dart';
+import 'package:tuncblog/feature/blog/presentation/pages/blog_viewer_page.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -93,6 +95,11 @@ class _SignInPageState extends State<SignInPage> {
                                     password: passwordController.text.trim(),
                                   ),
                                 );
+                            Navigator.of(context).pushReplacement(
+                              MaterialPageRoute(
+                                builder: (context) => const BlogPage(),
+                              ),
+                            );
                           }
                         },
                       ),

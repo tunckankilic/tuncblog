@@ -3,6 +3,13 @@
         android:label="tuncblog"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <supports-screens
+            android:smallScreens="true"
+            android:normalScreens="true"
+            android:largeScreens="false"
+            android:xlargeScreens="false"
+            android:resizeable="false"
+            android:anyDensity="true"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

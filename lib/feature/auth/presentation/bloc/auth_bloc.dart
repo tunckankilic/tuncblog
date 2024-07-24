@@ -32,6 +32,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthLogin>(_onAuthLogin);
     on<AuthIsUserLoggedIn>(_isUserLoggedIn);
     on<AuthSignOut>(_onAuthSignOut);
+    on<AuthDeleted>(_onAuthDeleted);
   }
 
   void _isUserLoggedIn(
